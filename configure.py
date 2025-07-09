@@ -311,6 +311,7 @@ cflags_libnw4r_g3d_scnrfl = [
 # EGG flags
 cflags_egg = [
     *cflags_base,
+    # *cflags_pedantic,
     "-enc SJIS",
     "-use_lmw_stmw on",
     "-str reuse,pool,readonly",
@@ -361,6 +362,8 @@ Equivalent = config.non_matching
 def MatchingFor(*versions):
     return config.version in versions
 
+
+# fmt: off
 
 config.warn_missing_config = False  # TODO enable
 config.warn_missing_source = False
@@ -620,8 +623,8 @@ config.libs = [
             Object(Matching, "egg/gfx/eggShadowTextureManager.cpp"),
             Object(Matching, "egg/gfx/eggStateGX.cpp"),
             Object(Matching, "egg/gfx/eggTextureBuffer.cpp"),
-            Object(NonMatching, "egg/gfx/eggAnalizeDL.cpp"),
-            Object(NonMatching, "egg/gfx/eggCapTexture.cpp"),
+            Object(Matching, "egg/gfx/eggAnalizeDL.cpp"),
+            Object(Matching, "egg/gfx/eggCapTexture.cpp"),
             Object(NonMatching, "egg/gfx/eggCpuTexture.cpp"),
             Object(NonMatching, "egg/gfx/eggDrawGX.cpp"),
             Object(NonMatching, "egg/gfx/eggDrawPathBase.cpp"),
@@ -658,49 +661,45 @@ config.libs = [
             Object(NonMatching, "egg/gfx/eggFrustum.cpp"),
             Object(Matching, "egg/gfx/eggGXUtility.cpp"),
             Object(NonMatching, "egg/gfx/eggDrawHelper.cpp"),
-            Object(Matching, "egg/prim/eggAssert.cpp",
-                   extra_cflags=["-Cpp_exceptions on"]),
-            Object(Matching, "egg/math/eggMath.cpp",
-                   extra_cflags=["-Cpp_exceptions on"]),
-            Object(Matching, "egg/math/eggMatrix.cpp",
-                   extra_cflags=["-Cpp_exceptions on"]),
-            Object(Matching, "egg/math/eggQuat.cpp",
-                   extra_cflags=["-Cpp_exceptions on"]),
-            Object(Matching, "egg/math/eggVector.cpp",
-                   extra_cflags=["-Cpp_exceptions on"]),
-            Object(NonMatching, "egg/core/eggExpHeap.cpp"),
-            Object(NonMatching, "egg/core/eggFrmHeap.cpp"),
+            Object(Matching, "egg/prim/eggAssert.cpp", extra_cflags=["-Cpp_exceptions on"]),
+            Object(Matching, "egg/math/eggMath.cpp", extra_cflags=["-Cpp_exceptions on"]),
+            Object(Matching, "egg/math/eggMatrix.cpp", extra_cflags=["-Cpp_exceptions on"]),
+            Object(Matching, "egg/math/eggQuat.cpp", extra_cflags=["-Cpp_exceptions on"]),
+            Object(Matching, "egg/math/eggVector.cpp", extra_cflags=["-Cpp_exceptions on"]),
+            Object(Matching, "egg/core/eggExpHeap.cpp"),
+            Object(Matching, "egg/core/eggFrmHeap.cpp"),
             Object(Matching, "egg/core/eggHeap.cpp"),
             Object(Matching, "egg/core/eggAllocator.cpp"),
             Object(Matching, "egg/core/eggThread.cpp"),
-            Object(NonMatching, "egg/core/eggSystem.cpp"),
+            Object(Matching, "egg/core/eggSystem.cpp"),
             Object(Matching, "egg/core/eggTaskThread.cpp"),
             Object(Matching, "egg/core/eggGraphicsFifo.cpp"),
             Object(Matching, "egg/core/eggColorFader.cpp"),
             Object(Matching, "egg/core/eggSceneManager.cpp"),
             Object(NonMatching, "egg/core/eggController.cpp"),
-            Object(NonMatching, "egg/core/eggStream.cpp"),
+            Object(Matching, "egg/core/eggStream.cpp"),
             Object(Matching, "egg/core/eggDisplay.cpp"),
-            Object(NonMatching, "egg/core/eggVideo.cpp"),
+            Object(Matching, "egg/core/eggVideo.cpp"),
             Object(Matching, "egg/core/eggXfb.cpp"),
             Object(Matching, "egg/core/eggXfbManager.cpp"),
-            Object(NonMatching, "egg/core/eggDvdRipper.cpp"),
+            Object(Matching, "egg/core/eggDvdRipper.cpp"),
             Object(Matching, "egg/core/eggDvdFile.cpp"),
             Object(Matching, "egg/core/eggScene.cpp"),
-            Object(NonMatching, "egg/core/eggProcessMeter.cpp"),
+            Object(Matching, "egg/core/eggProcessMeter.cpp"),
             Object(Matching, "egg/core/eggDisposer.cpp"),
             Object(Matching, "egg/core/eggArchive.cpp"),
             Object(NonMatching, "egg/core/eggDecomp.cpp"),
             Object(Matching, "egg/core/eggAsyncDisplay.cpp"),
             Object(Matching, "egg/core/eggCntFile.cpp"),
             Object(Matching, "egg/audio/eggAudioArcPlayerMgr.cpp"),
-            Object(NonMatching, "egg/audio/eggAudioExpMgr.cpp"),
-            Object(NonMatching, "egg/audio/eggAudioFxMgr.cpp"),
+            Object(Matching, "egg/audio/eggAudioExpMgr.cpp"),
+            Object(Matching, "egg/audio/eggAudioFxMgr.cpp"),
             Object(Matching, "egg/audio/eggAudioHeapMgr.cpp"),
-            Object(NonMatching, "egg/audio/eggAudioMgr.cpp"),
+            Object(Matching, "egg/audio/eggAudioMgr.cpp"),
+            Object(Matching, "egg/audio/eggAudio3DActor.cpp"),
             Object(Matching, "egg/audio/eggAudioSystem.cpp"),
-            Object(NonMatching, "egg/util/eggMsgRes.cpp"),
-            Object(NonMatching, "egg/util/eggEffect.cpp"),
+            Object(Matching, "egg/util/eggMsgRes.cpp"),
+            Object(Matching, "egg/util/eggEffect.cpp"),
             Object(Matching, "egg/util/eggException.cpp"),
         ],
     },
@@ -1042,6 +1041,9 @@ config.libs = [
         ],
     },
 ]
+
+# fmt: on
+
 
 # Optional extra categories for progress tracking
 config.progress_categories = [

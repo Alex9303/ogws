@@ -13,12 +13,20 @@ FixNamespaceComments: true
 AccessModifierOffset: -4
 AllowShortFunctionsOnASingleLine: Empty
 WhitespaceSensitiveMacros: [
-  NW4R_UT_LINKLIST_FOREACH, 
+  DECOMP_FORCEACTIVE,
+  DECOMP_FORCELITERAL,
+  DECOMP_FORCEACTIVE_DTOR,
+  NW4R_UT_LINKLIST_FOREACH,
   NW4R_UT_LINKLIST_FOREACH_SAFE,
   NW4R_UT_LIST_FOREACH,
   NW4R_UT_LIST_FOREACH_SAFE,
   NW4R_EF_LIST_FOREACH,
-  NW4R_EF_LIST_FOREACH_SAFE
+  NW4R_EF_LIST_FOREACH_SAFE,
+  EGG_ASSERT,
+  EGG_ASSERT_MSG,
+]
+ForEachMacros: [
+  EGG_NW4R_LIST_FOREACH,
 ]
 AttributeMacros: [DECOMP_INLINE, DECOMP_DONT_INLINE]
 InsertNewlineAtEOF: true
@@ -32,7 +40,7 @@ IncludeCategories:
     Priority:        2
     CaseSensitive:   true
 
-  - Regex:           '<nw4r\/[[:lower:].]+h>' # NW4R public headers
+  - Regex:           '<nw4r\/[[:alnum:].]+h>' # NW4R public headers
     Priority:        3
     CaseSensitive:   true
 

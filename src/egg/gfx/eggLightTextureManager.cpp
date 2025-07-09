@@ -163,8 +163,8 @@ namespace EGG
 
         mDrawFlags |= view;
 
-        StateGX::ScopedColor color(true);
-        StateGX::ScopedAlpha alpha(false);
+        StateGX::ScopedColorUpdate color(true);
+        StateGX::ScopedAlphaUpdate alpha(false);
 
         // TODO
         
@@ -204,8 +204,8 @@ namespace EGG
         
         if (!(mFlags & 0x40))
         {   
-            StateGX::ScopedColor color(true);
-            StateGX::ScopedAlpha alpha(true);
+            StateGX::ScopedColorUpdate color(true);
+            StateGX::ScopedAlphaUpdate alpha(true);
 
             if ((mFlags & 0x8) || texBuf != NULL)
             {
@@ -222,10 +222,10 @@ namespace EGG
                 if (texBuf != NULL)
                 {
                     DrawGX::BeginDrawScreen(true, true, false);
-                    DrawGX::SetBlendMode(DrawGX::BLEND_9);
+                    DrawGX::SetBlendMode(DrawGX::BLEND_REPLACE);
                     GXSetBlendMode(GX_BM_NONE, GX_BL_SRCALPHA, GX_BL_INVSRCALPHA, GX_LO_CLEAR);
                     texBuf->load(GX_TEXMAP0);
-                    DrawGX::DrawDL(DrawGX::DL_16, forDL, DrawGX::scColorWhite);
+                    DrawGX::DrawDL(DrawGX::DL_SCREEN_TEXTURE, forDL, DrawGX::WHITE);
                     texBuf->free();
                 }
                 else
@@ -236,8 +236,8 @@ namespace EGG
                     if (setPixelFmt)
                     {
                         DrawGX::BeginDrawScreen(true, false, true);
-                        DrawGX::SetBlendMode(DrawGX::BLEND_9);
-                        DrawGX::DrawDL(DrawGX::DL_17, forDL, StateGX::getDefaultTexColor());   
+                        DrawGX::SetBlendMode(DrawGX::BLEND_REPLACE);
+                        DrawGX::DrawDL(DrawGX::DL_SCREEN, forDL, StateGX::getDefaultTexColor());   
                     }
                 }
             }
