@@ -26,7 +26,7 @@ void fn_8034E974(void* pArrEntry, int validCount);
 /**
  * @brief Creates and initializes the seven lane contexts
  *
- * @param objectManager TODO: rewrite this!
+ * @param objectManager Scene object manager
  */
 void RPBowGlobalLaneManager::InitializeLaneContexts(RPBowSceneObjectManager* objectManager) {
     for (int i = 0; i < 7; i++) {
