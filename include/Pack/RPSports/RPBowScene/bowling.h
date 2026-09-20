@@ -603,7 +603,7 @@ class LaneContext : public IRPSysHostIOSocket {
 public:
     // total size: 0x2080. confirmed by RPBowGlobalLaneManager::InitializeLaneContexts.
     // first virtual functions are taken up by rtti and IRPSysHostIOSocket's virtual functions.
-    virtual void VF_0x14(); // at 0x14
+    virtual float VF_0x14(); // at 0x14
     virtual void VF_0x18(); // at 0x18
     virtual void VF_0x1C(); // at 0x1C
 

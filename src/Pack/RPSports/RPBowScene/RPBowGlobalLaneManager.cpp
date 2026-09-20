@@ -20,9 +20,6 @@ extern void* lbl_803CA5F0[];
 // Extern Functions
 void fn_803295D0(LaneBvhData* pBvhData, void* pArg1, void* pArg2);
 
-void fn_8034EADC(void* pArrEntry, int validCount, nw4r::math::MTX34* pResultMtx, nw4r::math::MTX34* pMtx, bool flag);
-void fn_8034E974(void* pArrEntry, int validCount);
-
 /**
  * @brief Creates and initializes the seven lane contexts
  *
@@ -140,7 +137,7 @@ void RPBowGlobalLaneManager::UpdateLaneItems(RPBowCameraTransform* transform, Ca
     nw4r::math::MTX34* pResultMtx = pObjectManager->ProcessCamera(pObj, transform);
 
     for (int i = 0; i < 7; i++) {
-        void* pArrEntry = pObjectManager->entities.pinManagers[i];
+        RPBowRegularPinManager* pinManager = pObjectManager->entities.pinManagers[i];
         int validCount = 0;
 
         for (int j = 0; j < 10; j++) {
@@ -196,18 +193,16 @@ void RPBowGlobalLaneManager::UpdateLaneItems(RPBowCameraTransform* transform, Ca
                     mtx._23 = t23;
                 }
 
-                bool flag = false;
+                u32 flag = 0;
                 if (i == 0 && isPlayerTurn != 0) {
-                    flag = true;
+                    flag = 1;
                 }
 
-                pLanes[i]->VF_0x14();
-
-                fn_8034EADC(pArrEntry, validCount, pResultMtx, pMtx, flag);
+                pinManager->CalculatePinTransforms(validCount, pLanes[i]->VF_0x14(), pResultMtx, pMtx, (nw4r::math::MTX34*)flag);
                 validCount++;
             }
         }
-        fn_8034E974(pArrEntry, validCount);
+        pinManager->HideExcessPins(validCount);
     }
 }
 
