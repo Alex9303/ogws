@@ -186,10 +186,10 @@ public:
 
     RPGrpModel* mpModel[2];  // offset 0x4, size 0x8
     nw4r::math::MTX34 mMtx;  // offset 0xC, size 0x30
-    int primaryState;        // offset 0x3C, size 0x4
-    int sequencePhase;       // offset 0x40, size 0x4
-    float angle;             // offset 0x44, size 0x4
-    float frameTimer;        // offset 0x48, size 0x4
+    int mPrimaryState;       // offset 0x3C, size 0x4
+    int mSequencePhase;      // offset 0x40, size 0x4
+    float mAngle;            // offset 0x44, size 0x4
+    float mFrameTimer;       // offset 0x48, size 0x4
 
     void fn_80323790();
 

@@ -16,9 +16,9 @@ void LaneContext::ResetPinSetterState(u8 isNewRack) {
     setterAnimation.isNewRack = isNewRack;
 
     RPBowPinSetterModel* pSetter = pPinSetter;
-    pSetter->sequencePhase = 0;
-    pSetter->primaryState = 0;
-    pSetter->frameTimer = 0.0f;
+    pSetter->mSequencePhase = 0;
+    pSetter->mPrimaryState = 0;
+    pSetter->mFrameTimer = 0.0f;
 }
 
 /**
@@ -61,7 +61,7 @@ int LaneContext::UpdatePinSetter() {
         nw4r::math::VEC3 ballPos(x, y, z);
 
         if (ballPos.z < SWEEPER_BALL_Z_TRIGGER) {
-            pPinSetter->sequencePhase = 1;
+            pPinSetter->mSequencePhase = 1;
         }
         return 1;
     }
@@ -71,7 +71,7 @@ int LaneContext::UpdatePinSetter() {
     }
 
     if (sequenceFrame == 1 && setterAnimation.isNewRack == 0) {
-        pPinSetter->sequencePhase = 2;
+        pPinSetter->mSequencePhase = 2;
     }
 
     if (setterAnimation.sequenceFrameCount == SWEEPER_FRAME_LIFT_PINS && setterAnimation.isNewRack == 0) {
@@ -83,7 +83,7 @@ int LaneContext::UpdatePinSetter() {
     }
 
     if (setterAnimation.sequenceFrameCount == SWEEPER_FRAME_START_SWEEP) {
-        pPinSetter->sequencePhase = 3;
+        pPinSetter->mSequencePhase = 3;
     }
 
     if (setterAnimation.sequenceFrameCount > SWEEPER_FRAME_START_SWEEP) {
